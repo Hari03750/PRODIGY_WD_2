@@ -1,4 +1,3 @@
-let [minutes, seconds, one hundered of seconds] = [0, 0, 0];
 let [hours, minutes, seconds, milliseconds] = [0, 0, 0, 0];
 let display = document.getElementById("display");
 let startStopBtn = document.getElementById("startStop");
