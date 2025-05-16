@@ -30,8 +30,8 @@ h1 {
 }
 
 .circle {
-  width: 220px;
-  height: 220px;
+  width: 240px;           /* was 220px */
+  height: 240px;
   margin: 0 auto 20px;
   background: conic-gradient(#38bdf8, #0ea5e9);
   border-radius: 50%;
@@ -44,9 +44,12 @@ h1 {
   background-color: #0f172a;
   padding: 20px;
   border-radius: 50%;
-  font-size: 1.8rem;
+  font-size: 2rem;       /* Increased size for 00:00:00:00 format */
   font-weight: 600;
   color: #f8fafc;
+  letter-spacing: 2px;   /* Adds spacing between digits */
+  min-width: 180px;      /* Ensures wide enough circle */
+  text-align: center;
 }
 
 .buttons {
