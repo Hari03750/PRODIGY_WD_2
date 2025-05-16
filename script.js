@@ -35,7 +35,7 @@ function stopwatch() {
 
 startStopBtn.addEventListener("click", () => {
   if (!isRunning) {
-    timer = setInterval(stopwatch, 10); // 10ms interval
+    timer = setInterval(stopwatch, 10);
     startStopBtn.innerText = "Pause";
     isRunning = true;
   } else {
@@ -63,21 +63,3 @@ lapBtn.addEventListener("click", () => {
   }
 });
 
-
-resetBtn.addEventListener("click", () => {
-  clearInterval(timer);
-  [hours, minutes, seconds, milliseconds] = [0, 0, 0, 0];
-  updateDisplay();
-  startStopBtn.innerText = "Start";
-  isRunning = false;
-  laps.innerHTML = "";
-});
-
-lapBtn.addEventListener("click", () => {
-  if (isRunning) {
-    const lapTime = display.innerText;
-    const p = document.createElement("p");
-    p.innerText = `Lap: ${lapTime}`;
-    laps.prepend(p);
-  }
-});
