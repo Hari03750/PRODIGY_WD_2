@@ -1,4 +1,5 @@
 let [minutes, seconds, one hundered of seconds] = [0, 0, 0];
+let [hours, minutes, seconds, milliseconds] = [0, 0, 0, 0];
 let display = document.getElementById("display");
 let startStopBtn = document.getElementById("startStop");
 let resetBtn = document.getElementById("reset");
@@ -9,28 +10,33 @@ let timer = null;
 let isRunning = false;
 
 function updateDisplay() {
+  let h = hours < 10 ? "0" + hours : hours;
   let m = minutes < 10 ? "0" + minutes : minutes;
   let s = seconds < 10 ? "0" + seconds : seconds;
-  let o = one hundered of seconds < 10 ? "100" + seconds : seconds;
-  display.innerText = `${m}:${s}:${o}`;
+  let ms = milliseconds < 10 ? "0" + milliseconds : milliseconds;
+  display.innerText = `${h}:${m}:${s}:${ms}`;
 }
 
 function stopwatch() {
-  one hundered of seconds;
-  if (one hundered of seconds === 60) {
-    one hundered of seconds = 0;
+  milliseconds += 1;
+  if (milliseconds === 100) {
+    milliseconds = 0;
     seconds++;
   }
   if (seconds === 60) {
     seconds = 0;
     minutes++;
   }
+  if (minutes === 60) {
+    minutes = 0;
+    hours++;
+  }
   updateDisplay();
 }
 
 startStopBtn.addEventListener("click", () => {
   if (!isRunning) {
-    timer = setInterval(stopwatch, 1000);
+    timer = setInterval(stopwatch, 10); // 10ms interval
     startStopBtn.innerText = "Pause";
     isRunning = true;
   } else {
@@ -42,7 +48,7 @@ startStopBtn.addEventListener("click", () => {
 
 resetBtn.addEventListener("click", () => {
   clearInterval(timer);
-  [minutes, seconds, one hundered of seconds] = [0, 0, 0];
+  [hours, minutes, seconds, milliseconds] = [0, 0, 0, 0];
   updateDisplay();
   startStopBtn.innerText = "Start";
   isRunning = false;
